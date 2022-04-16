@@ -18,6 +18,6 @@ module.exports = async(client, message) => {
     if (message.member.roles.cache.has(cmd.authRole) || !cmd.authRole) {
         cmd.execute(client, message, args);
     } else {
-        message.reply("You dont have perms to do that fucker")
+        return;
     }
 }

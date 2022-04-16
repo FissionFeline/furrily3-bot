@@ -1,4 +1,1 @@
-module.exports = (client , member) => {
-    console.log(member);
-    
-}
+module.exports = (client, member) => {}

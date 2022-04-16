@@ -3,10 +3,22 @@ module.exports = {
     description: "Creates a new embed",
     usage: '>embed_create "titel" "Description"',
     trigger: "here",
-    authRole: "932027181553573980",
     category: "Stuff",
     async execute(client, msg, args) {
-
-        msg.channel.send()
+        const { MessageEmbed } = require('discord.js');
+        const exampleEmbed = new MessageEmbed()
+            .setColor('#0099ff')
+            .setTitle('Choose your role color')
+            .setDescription('React below with your desired role color')
+            .setFooter("If you're having issues dm Furious Feline#3399");
+        msg.channel.send({ embeds: [exampleEmbed] }).then(sentEmbed => {
+            sentEmbed.react("🟥")
+            sentEmbed.react("🟧")
+            sentEmbed.react("🟨")
+            sentEmbed.react("🟩")
+            sentEmbed.react("🟦")
+            sentEmbed.react("🟪")
+            sentEmbed.react("⬛")
+        })
     }
 }
