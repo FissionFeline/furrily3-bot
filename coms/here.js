@@ -6,12 +6,12 @@ module.exports = {
     category: "Stuff",
     async execute(client, msg, args) {
         const { MessageEmbed } = require('discord.js');
-        const exampleEmbed = new MessageEmbed()
+        const embed = new MessageEmbed()
             .setColor('#0099ff')
             .setTitle('Choose your role color')
             .setDescription('React below with your desired role color')
             .setFooter("If you're having issues dm Furious Feline#3399");
-        msg.channel.send({ embeds: [exampleEmbed] }).then(sentEmbed => {
+        msg.channel.send({ embeds: [embed] }).then(sentEmbed => {
             sentEmbed.react("🟥")
             sentEmbed.react("🟧")
             sentEmbed.react("🟨")
