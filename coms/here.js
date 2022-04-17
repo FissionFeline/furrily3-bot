@@ -8,17 +8,13 @@ module.exports = {
         const { MessageEmbed } = require('discord.js');
         const embed = new MessageEmbed()
             .setColor('#0099ff')
-            .setTitle('Choose your role color')
-            .setDescription('React below with your desired role color')
+            .setTitle('Choose your prononouns')
+            .addFields({ name: 'He/Him', value: '1️⃣' }, { name: 'She/Her', value: '2️⃣' }, { name: 'They/Them', value: '3️⃣' })
             .setFooter("If you're having issues dm Furious Feline#3399");
         msg.channel.send({ embeds: [embed] }).then(sentEmbed => {
-            sentEmbed.react("🟥")
-            sentEmbed.react("🟧")
-            sentEmbed.react("🟨")
-            sentEmbed.react("🟩")
-            sentEmbed.react("🟦")
-            sentEmbed.react("🟪")
-            sentEmbed.react("⬛")
+            sentEmbed.react("1️⃣")
+            sentEmbed.react("2️⃣")
+            sentEmbed.react("3️⃣")
         })
     }
 }
