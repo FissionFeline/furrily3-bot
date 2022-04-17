@@ -25,10 +25,24 @@ client.on('messageReactionAdd', async(reaction, user) => {
             const guild_int = client.guilds.cache.get("963953169682034688");
             const member = guild_int.members.cache.get(user.id)
             const role = guild_int.roles.cache.find(role => role.id === conf_roles.messages[reaction.message.id][reaction.emoji.name]);
-            member.roles.add(role)
+            await member.roles.add(role)
         } catch (e) { console.log(e) }
     }
 })
+
+
+client.on('messageReactionRemove', async(reaction, user) => {
+    if (user.bot) return;
+    if (conf_roles.messages[reaction.message.id]) {
+        try {
+            const guild_int = client.guilds.cache.get("963953169682034688");
+            const member = guild_int.members.cache.get(user.id)
+            const role = guild_int.roles.cache.find(role => role.id === conf_roles.messages[reaction.message.id][reaction.emoji.name]);
+            await member.roles.remove(role)
+        } catch (e) { console.log(e) }
+    }
+})
+
 
 const events = fs.readdirSync("./events").filter(file => file.endsWith(".js"));
 for (const file of events) {
