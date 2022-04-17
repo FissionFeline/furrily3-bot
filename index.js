@@ -1,7 +1,10 @@
 const Discord = require('discord.js');
 const fs = require("fs");
 const fuckIntents = new Discord.Intents(32767);
-const client = new Discord.Client({ intents: fuckIntents })
+const client = new Discord.Client({
+    intents: fuckIntents,
+    partials: ['CHANNEL', 'GUILD_MEMBER', 'GUILD_SCHEDULED_EVENT', 'MESSAGE', 'REACTION', 'USER']
+})
 require('dotenv').config()
 
 client.config = require("./config.json")
@@ -12,6 +15,20 @@ client.once('ready', () => {
     console.log('Ready!');
     client.user.setActivity("I want meth");
 });
+
+const conf_roles = require("./reaction.json")
+
+client.on('messageReactionAdd', async(reaction, user) => {
+    if (user.bot) return;
+    if (conf_roles.messages[reaction.message.id]) {
+        try {
+            const guild_int = client.guilds.cache.get("963953169682034688");
+            const member = guild_int.members.cache.get(userid)
+            const role = guild_int.roles.cache.find(role => role.id === conf_roles.messages[reaction.message.id][reaction.emoji.name]);
+            member.roles.add(role)
+        } catch (e) { console.log(e) }
+    }
+})
 
 const events = fs.readdirSync("./events").filter(file => file.endsWith(".js"));
 for (const file of events) {
