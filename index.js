@@ -23,7 +23,7 @@ client.on('messageReactionAdd', async(reaction, user) => {
     if (conf_roles.messages[reaction.message.id]) {
         try {
             const guild_int = client.guilds.cache.get("963953169682034688");
-            const member = guild_int.members.cache.get(userid)
+            const member = guild_int.members.cache.get(user.id)
             const role = guild_int.roles.cache.find(role => role.id === conf_roles.messages[reaction.message.id][reaction.emoji.name]);
             member.roles.add(role)
         } catch (e) { console.log(e) }
